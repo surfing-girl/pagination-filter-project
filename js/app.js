@@ -65,11 +65,18 @@ Pagination.prototype.createAnchorList = function() {
 	return anchorList2;
 };
 
+Pagination.prototype.ulFadeIn = function() {
+	var mainUl = document.getElementsByTagName('ul')[0];
+	mainUl.style.display = 'none';
+	$( mainUl ).fadeIn();
+};
+
 
 Pagination.prototype.paginationClickHandler = function (element, elementValue) {
 	element.onclick = function (event) {
 		event.preventDefault();
 		newPagination.showStudents(elementValue + 1);
+		newPagination.ulFadeIn();	
 	};
 };
 

@@ -35,7 +35,8 @@ SearchBar.prototype.submission = function () {
 SearchBar.prototype.clickHandler = function () {
 	this.submission();
 	this.pagination.showStudents(1);
-	this.pagination.createAnchorList().forEach(newPagination.paginationClickHandler, newPagination);
+	this.pagination.createAnchorList().forEach(this.pagination.paginationClickHandler, this.pagination);
+	this.pagination.ulFadeIn();
 }
 
 var newSearchBar = new SearchBar('h3', newPagination);
