@@ -1,3 +1,5 @@
+'use strict';
+
 function Pagination(studentsNumberOnPage, className) {
 	this.studentsNumberOnPage = studentsNumberOnPage;
 	this.studentsListLi = document.getElementsByClassName(className);
