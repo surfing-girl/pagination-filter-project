@@ -1,7 +1,7 @@
 function Pagination(studentsNumberOnPage, className) {
 	this.studentsNumberOnPage = studentsNumberOnPage;
 	this.studentsListLi = document.getElementsByClassName(className);
-	this.displayListLi = this.studentsListLi;
+	this.displayListLi = [];
 	this.index = 0;
 	var pagination = document.createElement('div');
 	pagination.className = 'pagination';
@@ -14,9 +14,8 @@ function Pagination(studentsNumberOnPage, className) {
 		var span = document.createElement('span');
 		span.innerText = i + 1;
 		this.studentsListLi[i].appendChild(span);
-		//this.studentsListLi[i].style.display = 'none';
+		this.studentsListLi[i].style.display = 'none';
 	}
-	console.log(typeof this.displayListLi);
 
 }
 
@@ -41,17 +40,18 @@ Pagination.prototype.showStudents = function(pageValue) {
 	this.index = this.studentsNumberOnPage * pageValue;
 	for (var i = 0; i < this.studentsListLi.length; i++) {
 		if (i >= this.index - this.studentsNumberOnPage && i < this.index) {
-			this.studentsListLi[i].style.display = 'block';
-			//this.displayListLi.push(this.studentsListLi[i]);
-		} else {
+			//this.studentsListLi[i].style.display = 'block';
+			this.displayListLi.push(i);
+			
+		} /*else {
 			this.studentsListLi[i].style.display = 'none';
-		};
+		};*/
 		/*for (var i = 0; i < this.displayListLi.length; i++) {
 			this.displayListLi[i].style.display = 'block';
 		};*/
-		console.log('hi');
 	};
-	
+
+	console.log('----> ' + this.displayListLi);
 	console.log('Index: '+ this.index);
 	console.log('StudentsNumberOnPage: '+ this.studentsNumberOnPage + ' ,pageValue: ' + pageValue);
 };
