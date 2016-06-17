@@ -47,14 +47,16 @@ Pagination.prototype.showStudents = function(pageValue) {
 			this.studentsListLi[this.displayListLi[i]].style.display = 'block';	
 		}
 	};
-	console.log('----> ' + this.displayListLi);
 	console.log('Index: '+ this.index);
 	console.log('StudentsNumberOnPage: '+ this.studentsNumberOnPage + ' ,pageValue: ' + pageValue);
 };
 
 var newPagination = new Pagination(10, 'student-item');
-newPagination.printPagination(newPagination.studentsListLi);
+newPagination.printPagination();
 
+Pagination.prototype.createAnchorList = function(first_argument) {
+	// body...
+};
 var anchorList = document.getElementsByTagName('a');
 var anchorList2 = [];
 for (var i = 0; i < anchorList.length; i++) {

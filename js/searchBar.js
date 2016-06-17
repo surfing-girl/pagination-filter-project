@@ -27,6 +27,8 @@ SearchBar.prototype.submission = function () {
 		var studentListContainer = document.getElementsByClassName('student-list')[0];
 		studentListContainer.innerHTML = '<h1>There is no <span class="alert">' + this.searchValue + '</span> in our databse.';
 	};
+	newPagination.printPagination();
+	console.log('displayListLi LENGHT: ' + newPagination.displayListLi.length);
 }
 
 var newSearchBar = new SearchBar('h3');
@@ -34,7 +36,6 @@ var newSearchBar = new SearchBar('h3');
 SearchBar.prototype.clickHandler = function () {
 	newSearchBar.submission();
 	newPagination.showStudents(1);
-	
 }
 
 button.addEventListener("click", newSearchBar.clickHandler, false);
