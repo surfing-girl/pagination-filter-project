@@ -54,14 +54,15 @@ Pagination.prototype.showStudents = function(pageValue) {
 var newPagination = new Pagination(10, 'student-item');
 newPagination.printPagination();
 
-Pagination.prototype.createAnchorList = function(first_argument) {
-	// body...
+Pagination.prototype.createAnchorList = function() {
+	var anchorList = document.getElementsByTagName('a');
+	var anchorList2 = [];
+	for (var i = 0; i < anchorList.length; i++) {
+		anchorList2.push(anchorList[i]);
+	};
+	return anchorList2;
 };
-var anchorList = document.getElementsByTagName('a');
-var anchorList2 = [];
-for (var i = 0; i < anchorList.length; i++) {
-	anchorList2.push(anchorList[i]);
-};
+
 
 Pagination.prototype.paginationClickHandler = function (element, elementValue) {
 	element.onclick = function (event) {
@@ -72,6 +73,6 @@ Pagination.prototype.paginationClickHandler = function (element, elementValue) {
 
 
 newPagination.showStudents(1);
-anchorList2.forEach(newPagination.paginationClickHandler, newPagination);
+newPagination.createAnchorList().forEach(newPagination.paginationClickHandler, newPagination);
 
 

@@ -36,6 +36,7 @@ var newSearchBar = new SearchBar('h3');
 SearchBar.prototype.clickHandler = function () {
 	newSearchBar.submission();
 	newPagination.showStudents(1);
+	newPagination.createAnchorList().forEach(newPagination.paginationClickHandler, newPagination);
 }
 
 button.addEventListener("click", newSearchBar.clickHandler, false);
