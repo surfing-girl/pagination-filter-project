@@ -18,19 +18,16 @@ SearchBar.prototype.submission = function () {
 	var index = 0;
 	for (var i = 0; i < this.studentsNamesList.length; i++) {
 		if (this.studentsNamesList[i].toLowerCase().indexOf(this.searchValue.toLowerCase()) >= 0) {
-			//newPagination.studentsListLi[i].style.display = 'block';
 			this.searchList.push(newPagination.studentsListLi[i]);
 			index++;
-		} /*else {
-			newPagination.studentsListLi[i].style.display = 'none';
-		};*/
+		}
 	};
 	newPagination.displayListLi = this.searchList;
 	if (index == 0) {
 		var studentListContainer = document.getElementsByClassName('student-list')[0];
 		studentListContainer.innerHTML = '<h1>There is no <span class="alert">' + this.searchValue + '</span> in our databse.';
 	};
-	console.log(this.searchList);
+	console.log(newPagination.displayListLi);
 }
 
 /*SearchBar.prototype.showSearchedStudents = function () {
@@ -48,7 +45,6 @@ var newSearchBar = new SearchBar('h3');
 
 SearchBar.prototype.clickHandler = function () {
 	newSearchBar.submission();
-	//newSearchBar.showSearchedStudents();
 }
 
 button.addEventListener("click", newSearchBar.clickHandler, false);
