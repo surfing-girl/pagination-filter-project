@@ -23,7 +23,7 @@ function Pagination(studentsNumberOnPage, className) {
 
 Pagination.prototype.printPagination = function() {
 	var printNumbers = '';
-	var studentsNumber = this.studentsListLi.length;
+	var studentsNumber = this.displayListLi.length;
 	var pages = studentsNumber / this.studentsNumberOnPage;
 	var lastPage = studentsNumber % this.studentsNumberOnPage;
 	if (lastPage > 0) {
@@ -64,10 +64,7 @@ for (var i = 0; i < anchorList.length; i++) {
 Pagination.prototype.paginationClickHandler = function (element, elementValue) {
 	element.onclick = function (event) {
 		event.preventDefault();
-		this.displayListLi = [];
 		newPagination.showStudents(elementValue + 1);
-		console.log('Cleared list: ' + this.displayListLi);
-		
 	};
 };
 
