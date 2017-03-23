@@ -48,7 +48,7 @@ SearchBar.prototype.eventHandler = function () {
 }
 
 var newSearchBar = new SearchBar(newPagination);
-
+//button.addEventListener("click", function() { newSearchBar.eventHandler(); }, false);
 if (document.getElementById('button').addEventListener) {
     document.getElementById('button').addEventListener("click", function() { newSearchBar.eventHandler(); }, false);
 }
@@ -60,5 +60,4 @@ $(document).ready(function() {
 	$('#search').keyup(function () {
 		newSearchBar.eventHandler();
 	});
-
 });
