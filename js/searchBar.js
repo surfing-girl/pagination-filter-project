@@ -1,4 +1,9 @@
+/* jshint browser: true */
+/*globals $:false */
+/* jshint -W097 */
 'use strict';
+
+/* Function selects elements and creates lists with students info and empty div for successful student search */
 
 function SearchBar (pagination) {
 	var studentsNamesTags = document.getElementsByTagName('h3');
@@ -16,11 +21,13 @@ function SearchBar (pagination) {
 
 	for (var i = 0; i < studentsNamesTags.length; i++) {
 		this.studentsNamesList.push(studentsNamesTags[i].innerText);
-	};
-	for (var i = 0; i < studentsEmailsClasses.length; i++) {
+	}
+	for (i = 0; i < studentsEmailsClasses.length; i++) {
 		this.studentsEmailsList.push(studentsEmailsClasses[i].innerText);
-	};
+	}
 }
+
+/* Function checks searching results and adds a no students message or students info, prints adequate numbers in pagination  */
 
 SearchBar.prototype.submission = function () {
 	this.searchValue = this.inputSearch.value;
@@ -31,30 +38,31 @@ SearchBar.prototype.submission = function () {
 			this.pagination.displayListLi.push(i);
 			index++;
 		}
-	};
-	if (index == 0) {
-		this.noStudentMessage.innerHTML = '<h1>There is no <span class="alert">' + this.searchValue + '</span> in our databse.'
+	}
+	if (index === 0) {
+		this.noStudentMessage.innerHTML = '<h1>There is no <span class="alert">' + this.searchValue + '</span> in our databse.';
 	} else {
 		this.noStudentMessage.innerHTML = '';
-	};
+	}
 	this.pagination.printPagination();
-}
+};
 
 SearchBar.prototype.eventHandler = function () {
 	this.submission();
 	this.pagination.showStudents(1);
 	this.pagination.createAnchorList().forEach(this.pagination.paginationClickHandler, this.pagination);
 	this.pagination.ulFadeIn();
-}
+};
 
 var newSearchBar = new SearchBar(newPagination);
-//button.addEventListener("click", function() { newSearchBar.eventHandler(); }, false);
 if (document.getElementById('button').addEventListener) {
     document.getElementById('button').addEventListener("click", function() { newSearchBar.eventHandler(); }, false);
 }
 else {
     document.getElementById('button').attachEvent("onclick", newSearchBar.eventHandler);
 }
+
+/* Search results updates in real time as the user types */
 
 $(document).ready(function() {
 	$('#search').keyup(function () {

@@ -1,4 +1,9 @@
+/* jshint browser: true */
+/*globals $:false */
+/* jshint -W097 */
 'use strict';
+
+/* Function makes copy of student list and creates empty div which will be used to show pagination numbers */
 
 function Pagination(studentsNumberOnPage, className) {
 	this.studentsNumberOnPage = studentsNumberOnPage;
@@ -17,6 +22,8 @@ function Pagination(studentsNumberOnPage, className) {
 	pagination.appendChild(this.unorderedList);
 }
 
+/* Function prints pagination numbers  */
+
 Pagination.prototype.printPagination = function() {
 	var printNumbers = '';
 	var studentsNumber = this.displayListLi.length;
@@ -32,12 +39,14 @@ Pagination.prototype.printPagination = function() {
 	this.unorderedList.innerHTML = printNumbers;
 };
 
+/* Function displays disired number of students on a page */
+
 Pagination.prototype.showStudents = function(pageValue) {
 	this.index = this.studentsNumberOnPage * pageValue;
 	for (var i = 0; i < this.studentsListLi.length; i++) {
 		this.studentsListLi[i].style.display = 'none';
 	}
-	for (var i = 0; i < this.displayListLi.length; i++) {
+	for (i = 0; i < this.displayListLi.length; i++) {
 		if (i >= this.index - this.studentsNumberOnPage && i < this.index) {
 			this.studentsListLi[this.displayListLi[i]].style.display = 'block';
 		}
@@ -56,12 +65,16 @@ Pagination.prototype.createAnchorList = function() {
 	return anchorList2;
 };
 
+/* Function makes fade effect on unordered list */
+
 Pagination.prototype.ulFadeIn = function() {
 	var mainUl = document.getElementsByTagName('ul')[0];
 	mainUl.style.display = 'none';
 	$( mainUl ).fadeIn();
 };
 
+
+/* Function runs animation and showStudents function on click */
 
 Pagination.prototype.paginationClickHandler = function (element, elementValue) {
 	element.onclick = function (event) {
