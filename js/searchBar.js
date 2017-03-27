@@ -3,6 +3,25 @@
 /* jshint -W097 */
 'use strict';
 
+/* Function prints form into html file */
+
+function initSearchBarElement() {
+	var formContainer = document.getElementsByClassName('page-header')[0];
+	var createForm = document.createElement('form');
+	var createInput = document.createElement('input');
+	var createButton = document.createElement('button');
+	formContainer.appendChild(createForm);
+	createForm.className = "student-search";
+	createForm.appendChild(createInput);
+	createForm.appendChild(createButton);
+	createInput.setAttribute("id", "search");
+	createInput.setAttribute("placeholder", "Search for students...");
+	createButton.setAttribute("id", "button");
+	createButton.setAttribute("type", "button");
+	createButton.innerText= "Search";
+}
+initSearchBarElement();
+
 /* Function selects elements and creates lists with students info and empty div for successful student search */
 
 function SearchBar (pagination) {
