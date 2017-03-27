@@ -6,7 +6,7 @@ function Pagination(studentsNumberOnPage, className) {
 	this.displayListLi = [];
 	for (var i = 0; i < this.studentsListLi.length; i++) {
 		this.displayListLi.push(i);
-	};
+	}
 	this.index = 0;
 	var pagination = document.createElement('div');
 	pagination.className = 'pagination';
@@ -15,7 +15,7 @@ function Pagination(studentsNumberOnPage, className) {
 
 	container.appendChild(pagination);
 	pagination.appendChild(this.unorderedList);
-};
+}
 
 Pagination.prototype.printPagination = function() {
 	var printNumbers = '';
@@ -24,11 +24,11 @@ Pagination.prototype.printPagination = function() {
 	var lastPage = studentsNumber % this.studentsNumberOnPage;
 	if (lastPage > 0) {
 		pages += 1;
-	};
+	}
 	for (var i = 1; i <= pages; i++) {
 		printNumbers += '<li><a href="#">';
 		printNumbers += i + '</a></li>';
-	};
+	}
 	this.unorderedList.innerHTML = printNumbers;
 };
 
@@ -36,12 +36,12 @@ Pagination.prototype.showStudents = function(pageValue) {
 	this.index = this.studentsNumberOnPage * pageValue;
 	for (var i = 0; i < this.studentsListLi.length; i++) {
 		this.studentsListLi[i].style.display = 'none';
-	};
+	}
 	for (var i = 0; i < this.displayListLi.length; i++) {
 		if (i >= this.index - this.studentsNumberOnPage && i < this.index) {
 			this.studentsListLi[this.displayListLi[i]].style.display = 'block';
-		};
-	};
+		}
+	}
 };
 
 var newPagination = new Pagination(10, 'student-item');
@@ -52,7 +52,7 @@ Pagination.prototype.createAnchorList = function() {
 	var anchorList2 = [];
 	for (var i = 0; i < anchorList.length; i++) {
 		anchorList2.push(anchorList[i]);
-	};
+	}
 	return anchorList2;
 };
 
